@@ -1,9 +1,9 @@
 pkgbase = rpi-imager-no-root
+	contributor = James Linus <linjamus@yahoo.com>
 	pkgdesc = Raspberry Pi imaging utility patched to start without root privileges
 	pkgver = 2.0.11.1.36.gcf71bec3
 	pkgrel = 1
 	url = https://github.com/raspberrypi/rpi-imager
-	install = 
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
