@@ -1,0 +1,36 @@
+pkgbase = rpi-imager-no-root
+	pkgdesc = Raspberry Pi imaging utility patched to start without root privileges
+	pkgver = 2.0.11.1.36.gcf71bec3
+	pkgrel = 1
+	url = https://github.com/raspberrypi/rpi-imager
+	install = 
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = nettle3
+	makedepends = qt6-tools
+	makedepends = sed
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = curl
+	depends = gnutls
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = xz
+	optdepends = dosfstools: SD card bootloader support
+	optdepends = udisks2: write access to disks without root privileges
+	provides = rpi-imager
+	provides = rpi-imager=2.0.11.1.36.gcf71bec3
+	conflicts = rpi-imager
+	conflicts = rpi-imager-git
+	conflicts = rpi-imager-git-non-root
+	source = git+https://github.com/raspberrypi/rpi-imager.git
+	sha256sums = SKIP
+
+pkgname = rpi-imager-no-root

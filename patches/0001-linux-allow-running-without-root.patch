@@ -1,0 +1,33 @@
+From: James Linus <linjamus@yahoo.com>
+Subject: [PATCH 1/2] linux: allow running without root privileges
+
+Since 2.0.x, upstream rpi-imager refuses to start unless the process
+runs as root (hasElevatedPrivileges() checks euid == 0). When launched
+from a desktop applications menu (which never elevates), the GUI bails
+out before a window appears.
+
+Force hasElevatedPrivileges() to always report true on Linux. The UI
+itself does not need root; raw writes to physical disks are still
+guarded by the OS (udisks2/polkit on Linux), so the real permission
+model is untouched.
+
+See upstream issue: https://github.com/raspberrypi/rpi-imager/issues/1351
+---
+ src/linux/platformquirks_linux.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/linux/platformquirks_linux.cpp b/src/linux/platformquirks_linux.cpp
+index a2615cd026a6..790138ad1f05 100644
+--- a/src/linux/platformquirks_linux.cpp
++++ b/src/linux/platformquirks_linux.cpp
+@@ -771,7 +771,7 @@
+ 
+ bool hasElevatedPrivileges() {
+     // Check if running as root (UID 0)
+-    return ::geteuid() == 0;
++    return true;
+ }
+ 
+ void attachConsole() {
+-- 
+2.46.0
